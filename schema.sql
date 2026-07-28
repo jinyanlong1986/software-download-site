@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS software (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  icon TEXT NOT NULL DEFAULT 'S',
+  color TEXT NOT NULL DEFAULT '#4f46e5',
+  category TEXT NOT NULL,
+  platform TEXT NOT NULL,
+  version TEXT NOT NULL,
+  date TEXT NOT NULL,
+  downloads INTEGER NOT NULL DEFAULT 0,
+  description TEXT NOT NULL,
+  url TEXT NOT NULL
+);

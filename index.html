@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="软集 - 精选、干净的软件发现与下载站" />
+  <title>软集 - 发现好用的软件</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="软集首页"><span class="brand-mark">S</span><span>软集</span></a>
+    <nav aria-label="主导航"><a href="#latest">最新收录</a><a href="#popular">热门软件</a><a href="#categories">软件分类</a></nav>
+    <div class="header-actions"><button class="admin-button" id="adminButton" type="button">后台管理</button><button class="theme-button" id="themeButton" aria-label="切换深色模式" title="切换深色模式"><span aria-hidden="true">◐</span></button></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">CURATED SOFTWARE LIBRARY</p>
+        <h1>把好软件，<br /><em>收进你的工具箱。</em></h1>
+        <p class="hero-text">不堆砌，不打扰。这里收录经过筛选的实用软件，帮你快速找到真正趁手的工具。</p>
+        <label class="search-box" for="searchInput"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="搜索软件、功能或关键词" autocomplete="off" /><kbd>/</kbd></label>
+        <p class="search-note">已收录 <strong id="softwareCount">0</strong> 款软件 · 每周持续更新</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="floating-app app-one">⌘</div><div class="floating-app app-two">✦</div><div class="floating-app app-three">◈</div>
+        <div class="hero-card"><span>本周精选</span><strong>Obsidian</strong><small>把思绪连接成知识</small><i>↗</i></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="categories">
+      <div class="section-heading"><div><p class="eyebrow">BROWSE BY CATEGORY</p><h2>按分类探索</h2></div><p>从你的工作方式开始</p></div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <section class="content-section software-section" id="latest">
+      <div class="section-heading results-heading"><div><p class="eyebrow">FRESH PICKS</p><h2 id="softwareTitle">最新收录</h2></div><div class="sort-wrap"><label for="sortSelect">排序</label><select id="sortSelect"><option value="latest">最新发布</option><option value="popular">最受欢迎</option><option value="name">名称 A-Z</option></select></div></div>
+      <div class="active-filter" id="activeFilter" hidden><span></span><button id="clearFilter" type="button" aria-label="清除筛选">×</button></div>
+      <div class="software-grid" id="softwareGrid"></div>
+      <p class="empty-state" id="emptyState" hidden>没有找到匹配的软件。试试换个关键词或分类。</p>
+    </section>
+
+    <section class="content-section popular-section" id="popular">
+      <div class="section-heading"><div><p class="eyebrow">MOST LOVED</p><h2>大家都在用</h2></div><a class="text-link" href="#latest">查看全部 <span>→</span></a></div>
+      <div class="popular-list" id="popularList"></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span class="brand-mark">S</span><span>软集</span></a><p>发现好软件，让工具回归简单。</p><span>© 2026 软集</span></footer>
+
+  <dialog id="softwareDialog"><button class="dialog-close" id="dialogClose" aria-label="关闭">×</button><div id="dialogContent"></div></dialog>
+  <dialog id="adminDialog"><button class="dialog-close" id="adminClose" aria-label="关闭">×</button><h3>后台管理</h3><form id="adminForm"><label>管理密码<input id="adminPassword" type="password" required placeholder="首次使用请设置密码"></label><label>软件名称<input id="softwareName" required></label><label>分类<select id="softwareCategory" required></select></label><label>平台<input id="softwarePlatform" required placeholder="Windows / Mac"></label><label>版本<input id="softwareVersion" required></label><label>官方下载地址<input id="softwareUrl" type="url" required placeholder="https://"></label><label>软件简介<textarea id="softwareDesc" required></textarea></label><div class="form-row"><label>图标<input id="softwareIcon" maxlength="2" value="S"></label><label>颜色<input id="softwareColor" type="color" value="#4f46e5"></label></div><button class="download-link" type="submit">添加软件</button></form><div class="admin-list" id="adminList"></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
