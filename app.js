@@ -1,14 +1,4 @@
-const defaultSoftware = [
-  { name:'Obsidian', icon:'◈', color:'#7865e8', category:'效率办公', platform:'Win / Mac', version:'1.8.10', date:'2026-07-24', downloads:12840, desc:'本地优先的知识库，将零散想法连接成属于你的第二大脑。', url:'https://obsidian.md/download' },
-  { name:'Raycast', icon:'✦', color:'#ff5c58', category:'效率办公', platform:'macOS', version:'1.88.0', date:'2026-07-21', downloads:9620, desc:'更快的启动器、命令中心和自动化工具，让每次操作都更顺手。', url:'https://www.raycast.com/' },
-  { name:'PotPlayer', icon:'▶', color:'#28a8ea', category:'影音播放', platform:'Windows', version:'1.7.22619', date:'2026-07-19', downloads:24580, desc:'轻巧强大的本地播放器，支持丰富格式与细致的播放控制。', url:'https://potplayer.daum.net/' },
-  { name:'Figma', icon:'F', color:'#f24e1e', category:'设计创作', platform:'Web / Win', version:'在线版', date:'2026-07-16', downloads:18870, desc:'多人实时协作的界面设计工具，从灵感到交付都在同一个空间完成。', url:'https://www.figma.com/' },
-  { name:'LocalSend', icon:'↗', color:'#00a6a6', category:'实用工具', platform:'全平台', version:'1.17.0', date:'2026-07-14', downloads:11200, desc:'无需联网的局域网文件传输工具，简单、安全且没有大小限制。', url:'https://localsend.org/' },
-  { name:'Zed', icon:'Z', color:'#0749a9', category:'开发工具', platform:'Mac / Linux', version:'0.196.0', date:'2026-07-12', downloads:7540, desc:'为协作而生的高性能代码编辑器，拥有流畅的原生体验。', url:'https://zed.dev/' },
-  { name:'1Password', icon:'1', color:'#2775e8', category:'安全隐私', platform:'全平台', version:'8.11.8', date:'2026-07-09', downloads:13620, desc:'安全保存密码、密钥和重要资料，跨设备同步且随时可用。', url:'https://1password.com/downloads/' },
-  { name:'Steam', icon:'◆', color:'#1b2838', category:'游戏娱乐', platform:'Win / Mac', version:'最新版', date:'2026-07-06', downloads:31890, desc:'全球游戏玩家的数字发行平台，发现、购买并管理你的游戏库。', url:'https://store.steampowered.com/about/' },
-  { name:'Notion', icon:'N', color:'#242424', category:'效率办公', platform:'全平台', version:'4.19.0', date:'2026-07-03', downloads:27860, desc:'把文档、项目、知识库和协作都组织在一个灵活的工作空间。', url:'https://www.notion.so/desktop' }
-];
+const defaultSoftware = [];
 let software = [...defaultSoftware];
 const categories = [{name:'效率办公',icon:'⌘',color:'#e45738',bg:'#fff0ea'},{name:'开发工具',icon:'</>',color:'#456fe2',bg:'#edf1ff'},{name:'设计创作',icon:'✦',color:'#b44bc8',bg:'#fbedff'},{name:'影音播放',icon:'▶',color:'#178db5',bg:'#e8f7fc'},{name:'实用工具',icon:'⌁',color:'#118a72',bg:'#e8f8f2'},{name:'游戏娱乐',icon:'◇',color:'#df7424',bg:'#fff3e7'},{name:'安全隐私',icon:'▣',color:'#6978aa',bg:'#eff1f9'}];
 let selectedCategory='', query='', sort='latest';
