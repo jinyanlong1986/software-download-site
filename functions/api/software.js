@@ -26,6 +26,21 @@ export async function onRequestPost({ request, env }) {
   return json({ id: result.meta.last_row_id }, 201);
 }
 
+export async function onRequestPut({ request, env }) {
+  if (!authorized(request, env)) return json({ error: '管理密码错误' }, 401);
+  const id = new URL(request.url).searchParams.get('id');
+  if (!id) return json({ error: '缺少软件 ID' }, 400);
+  const item = await request.json();
+  const required = ['name', 'category', 'platform', 'version', 'desc', 'url'];
+  if (required.some(key => !String(item[key] || '').trim())) return json({ error: '请填写完整信息' }, 400);
+  if (!/^https:\/\//i.test(item.url)) return json({ error: '下载地址必须使用 HTTPS' }, 400);
+  const result = await env.DB.prepare(
+    'UPDATE software SET name = ?, icon = ?, color = ?, category = ?, platform = ?, version = ?, description = ?, url = ? WHERE id = ?'
+  ).bind(item.name.trim(), item.icon || 'S', item.color || '#4f46e5', item.category, item.platform.trim(), item.version.trim(), item.desc.trim(), item.url.trim(), id).run();
+  if (!result.meta.changes) return json({ error: '没有找到该软件' }, 404);
+  return json({ ok: true });
+}
+
 export async function onRequestDelete({ request, env }) {
   if (!authorized(request, env)) return json({ error: '管理密码错误' }, 401);
   const id = new URL(request.url).searchParams.get('id');
