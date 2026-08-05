@@ -1,7 +1,7 @@
 const defaultSoftware = [];
 let software = [...defaultSoftware];
 let editingIndex = -1;
-const categories = [{name:'效率办公',icon:'⌘',color:'#e45738',bg:'#fff0ea'},{name:'开发工具',icon:'</>',color:'#456fe2',bg:'#edf1ff'},{name:'设计创作',icon:'✦',color:'#b44bc8',bg:'#fbedff'},{name:'影音播放',icon:'▶',color:'#178db5',bg:'#e8f7fc'},{name:'实用工具',icon:'⌁',color:'#118a72',bg:'#e8f8f2'},{name:'游戏娱乐',icon:'◇',color:'#df7424',bg:'#fff3e7'},{name:'安全隐私',icon:'▣',color:'#6978aa',bg:'#eff1f9'}];
+const categories = [{name:'效率办公',icon:'⌘',color:'#e45738',bg:'#fff0ea'},{name:'开发工具',icon:'</>',color:'#456fe2',bg:'#edf1ff'},{name:'设计创作',icon:'✦',color:'#b44bc8',bg:'#fbedff'},{name:'影音播放',icon:'▶',color:'#178db5',bg:'#e8f7fc'},{name:'实用工具',icon:'⌁',color:'#118a72',bg:'#e8f8f2'},{name:'安全隐私',icon:'▣',color:'#6978aa',bg:'#eff1f9'}];
 let selectedCategory='', query='', sort='latest';
 const $ = s => document.querySelector(s);
 function matches(item){ const text=`${item.name} ${item.category} ${item.desc} ${item.platform}`.toLowerCase(); return (!selectedCategory || item.category===selectedCategory) && (!query || text.includes(query.toLowerCase())); }
