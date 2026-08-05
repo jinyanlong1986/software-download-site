@@ -19,7 +19,7 @@ export async function onRequestPost({ request, env }) {
   const item = await request.json();
   const required = ['name', 'category', 'platform', 'version', 'desc', 'url'];
   if (required.some(key => !String(item[key] || '').trim())) return json({ error: '请填写完整信息' }, 400);
-  if (!/^https:\/\//i.test(item.url)) return json({ error: '下载地址必须使用 HTTPS' }, 400);
+  if (!/^https?:\/\//i.test(item.url)) return json({ error: '下载地址必须使用 HTTP 或 HTTPS' }, 400);
   const result = await env.DB.prepare(
     'INSERT INTO software (name, icon, color, category, platform, version, date, downloads, description, url) VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?, ?)'
   ).bind(item.name.trim(), item.icon || 'S', item.color || '#4f46e5', item.category, item.platform.trim(), item.version.trim(), new Date().toISOString().slice(0, 10), item.desc.trim(), item.url.trim()).run();
@@ -33,7 +33,7 @@ export async function onRequestPut({ request, env }) {
   const item = await request.json();
   const required = ['name', 'category', 'platform', 'version', 'desc', 'url'];
   if (required.some(key => !String(item[key] || '').trim())) return json({ error: '请填写完整信息' }, 400);
-  if (!/^https:\/\//i.test(item.url)) return json({ error: '下载地址必须使用 HTTPS' }, 400);
+  if (!/^https?:\/\//i.test(item.url)) return json({ error: '下载地址必须使用 HTTP 或 HTTPS' }, 400);
   const result = await env.DB.prepare(
     'UPDATE software SET name = ?, icon = ?, color = ?, category = ?, platform = ?, version = ?, description = ?, url = ? WHERE id = ?'
   ).bind(item.name.trim(), item.icon || 'S', item.color || '#4f46e5', item.category, item.platform.trim(), item.version.trim(), item.desc.trim(), item.url.trim(), id).run();
